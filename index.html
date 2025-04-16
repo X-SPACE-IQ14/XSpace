@@ -1,207 +1,171 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>xspace | مساحة شخصية</title>
-  <style>
-    :root {
-      --primary-color: #222831;
-      --secondary-color: #393e46;
-      --accent-color: #00adb5;
-      --text-color: #eeeeee;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--primary-color);
-      color: var(--text-color);
-      line-height: 1.6;
-    }
-
-    header {
-      background-color: var(--secondary-color);
-      padding: 1rem;
-      text-align: center;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 2rem;
-      color: var(--accent-color);
-    }
-
-    .language-toggle,
-    .music-toggle {
-      position: fixed;
-      top: 1rem;
-      left: 1rem;
-      background: var(--accent-color);
-      color: white;
-      border: none;
-      padding: 0.5rem;
-      margin-left: 0.5rem;
-      cursor: pointer;
-      border-radius: 8px;
-    }
-
-    .music-toggle {
-      left: 6rem;
-    }
-
-    section {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .social a {
-      color: var(--accent-color);
-      text-decoration: none;
-      margin-right: 1rem;
-    }
-
-    .social a:hover {
-      text-decoration: underline;
-    }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-
-    .project-card {
-      background: var(--secondary-color);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .project-card img {
-      width: 100%;
-      display: block;
-    }
-
-    .project-card a {
-      display: block;
-      padding: 1rem;
-      color: var(--text-color);
-      text-align: center;
-      text-decoration: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XSpace | محمد</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --main-color: #3a3f58;
+            --accent-color: #a3d2ca;
+            --text-color: #fefefe;
+        }
+        body {
+            background-color: var(--main-color);
+            color: var(--text-color);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header, footer {
+            padding: 1rem;
+            background-color: var(--accent-color);
+            color: var(--main-color);
+            text-align: center;
+        }
+        .lang-music {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .lang-music button {
+            padding: 0.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--text-color);
+        }
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            padding: 2rem;
+        }
+        .project {
+            background-color: #444;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .project:hover {
+            transform: scale(1.05);
+        }
+        .project img {
+            width: 100%;
+            border-radius: 10px;
+            border: 2px solid var(--accent-color);
+        }
+        .xspace-logo {
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+            display: block;
+        }
+        audio {
+            display: none;
+        }
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .projects {
+                grid-template-columns: 1fr;
+            }
+            .lang-music {
+                top: 5px;
+                left: 5px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1 id="main-title">أهلاً، أنا xspace</h1>
-  </header>
-
-  <button class="language-toggle" onclick="toggleLang()">EN</button>
-  <button class="music-toggle" onclick="toggleMusic()">⏸️</button>
-
-  <section>
-    <p id="bio">
-      طالب في الصف السادس الإعدادي، أحب الألعاب وصناعة المحتوى ومونتاج الفيديوهات 🎮🎥
-    </p>
-
-    <div class="social">
-      <h2>روابطي</h2>
-      <a href="https://www.instagram.com/space.iqq/" target="_blank">انستقرام</a>
-      <a href="https://www.tiktok.com/@space.iq" target="_blank">تيك توك</a>
-      <a href="https://www.facebook.com/mohammed.rn.131488/" target="_blank">فيسبوك</a>
-      <a href="https://discord.gg/QPJ7tZtx" target="_blank">ديسكورد</a>
+    <div class="lang-music">
+        <button onclick="toggleLang()">🌐</button>
+        <input type="range" id="volume" min="0" max="1" step="0.01" value="0.3" onchange="setVolume(this.value)" title="تحكم بالصوت">
     </div>
+    
+    <!-- تم استبدال الصوت برابط مباشر لملف صوتي -->
+    <audio loop id="bg-music">
+        <source src="https://www.youtube.com/embed/CF2xLXPKoqA" type="audio/mpeg">
+        متصفحك لا يدعم الصوتيات
+    </audio>
 
-    <h2 id="projects-title">مشاريعي</h2>
-    <div class="projects">
-      <!-- مشروع واحد فقط مصغرة موحدة -->
-      <div class="project-card">
-        <img src="https://i.imgur.com/M9pXk5B.jpeg" alt="project thumbnail">
-        <a href="https://youtu.be/VubqNscw0LA" target="_blank">1</a>
-      </div>
-      <div class="project-card">
-        <img src="https://i.imgur.com/M9pXk5B.jpeg" alt="project thumbnail">
-        <a href="https://www.youtube.com/watch?v=tF3JlNYsD98" target="_blank">2</a>
-      </div>
-      <div class="project-card">
-        <img src="https://i.imgur.com/M9pXk5B.jpeg" alt="project thumbnail">
-        <a href="https://www.youtube.com/watch?v=XUm6tVEJ22U" target="_blank">3</a>
-      </div>
-      <div class="project-card">
-        <img src="https://i.imgur.com/M9pXk5B.jpeg" alt="project thumbnail">
-        <a href="https://www.youtube.com/watch?v=K_cnStsF33g" target="_blank">4</a>
-      </div>
-      <div class="project-card">
-        <img src="https://i.imgur.com/M9pXk5B.jpeg" alt="project thumbnail">
-        <a href="https://www.youtube.com/watch?v=cUlCyF_uj14" target="_blank">5</a>
-      </div>
-    </div>
-  </section>
+    <header>
+        <h1 id="main-title">مرحبا، أنا محمد</h1>
+        <p id="bio">طالب في الصف السادس الإعدادي، أحب الألعاب وصناعة المحتوى ومونتاج الفيديوهات.</p>
+    </header>
 
-  <!-- الموسيقى -->
-  <iframe
-    id="music"
-    width="0"
-    height="0"
-    src="https://www.youtube.com/embed/CF2xLXPKoqA?autoplay=1&loop=1&playlist=CF2xLXPKoqA&enablejsapi=1"
-    frameborder="0"
-    allow="autoplay"
-    allowfullscreen
-  ></iframe>
+    <section class="projects" id="projects">
+        <div class="project">
+            <a href="https://youtube.com/@XSpace" target="_blank">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzYTNmNTgiLz48dGV4dCB4PSIxMDAiIHk9IjEwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSIjYTNkMmNhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj5YU3BhY2U8L3RleHQ+PC9zdmc+" alt="XSpace Logo" class="xspace-logo">
+            </a>
+        </div>
+        <div class="project">
+            <a href="https://instagram.com/space.iqq" target="_blank">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzYTNmNTgiLz48dGV4dCB4PSIxMDAiIHk9IjEwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSIjYTNkMmNhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj5YU3BhY2U8L3RleHQ+PC9zdmc+" alt="XSpace Logo" class="xspace-logo">
+            </a>
+        </div>
+        <div class="project">
+            <a href="https://tiktok.com/@space.iq" target="_blank">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzYTNmNTgiLz48dGV4dCB4PSIxMDAiIHk9IjEwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSIjYTNkMmNhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj5YU3BhY2U8L3RleHQ+PC9zdmc+" alt="XSpace Logo" class="xspace-logo">
+            </a>
+        </div>
+        <div class="project">
+            <a href="https://facebook.com/mohammed.rn.131488" target="_blank">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzYTNmNTgiLz48dGV4dCB4PSIxMDAiIHk9IjEwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSIjYTNkMmNhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj5YU3BhY2U8L3RleHQ+PC9zdmc+" alt="XSpace Logo" class="xspace-logo">
+            </a>
+        </div>
+        <div class="project">
+            <a href="https://discord.gg/QPJ7tZtx" target="_blank">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzYTNmNTgiLz48dGV4dCB4PSIxMDAiIHk9IjEwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSIjYTNkMmNhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj5YU3BhY2U8L3RleHQ+PC9zdmc+" alt="XSpace Logo" class="xspace-logo">
+            </a>
+        </div>
+    </section>
 
-  <script src="https://www.youtube.com/iframe_api"></script>
+    <footer>
+        <p>روابط التواصل:</p>
+        <p>
+            <a href="https://instagram.com/space.iqq" target="_blank"><i class="fab fa-instagram"></i> انستغرام</a> |
+            <a href="https://tiktok.com/@space.iq" target="_blank"><i class="fab fa-tiktok"></i> تيك توك</a> |
+            <a href="https://facebook.com/mohammed.rn.131488" target="_blank"><i class="fab fa-facebook"></i> فيسبوك</a> |
+            <a href="https://discord.gg/QPJ7tZtx" target="_blank"><i class="fab fa-discord"></i> ديسكورد</a>
+        </p>
+    </footer>
 
-  <script>
-    const langData = {
-      ar: {
-        title: "أهلاً، أنا xspace",
-        bio: "طالب في الصف السادس الإعدادي، أحب الألعاب وصناعة المحتوى ومونتاج الفيديوهات 🎮🎥",
-        projectsTitle: "مشاريعي",
-        lang: "EN"
-      },
-      en: {
-        title: "Hello, I'm xspace",
-        bio: "I'm a 6th grade high school student. I love gaming, content creation, and video editing 🎮🎥",
-        projectsTitle: "My Projects",
-        lang: "AR"
-      }
-    };
-
-    let currentLang = "ar";
-    function toggleLang() {
-      currentLang = currentLang === "ar" ? "en" : "ar";
-      document.documentElement.lang = currentLang;
-      document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
-      document.getElementById("main-title").textContent = langData[currentLang].title;
-      document.getElementById("bio").textContent = langData[currentLang].bio;
-      document.getElementById("projects-title").textContent = langData[currentLang].projectsTitle;
-      document.querySelector(".language-toggle").textContent = langData[currentLang].lang;
-    }
-
-    let player;
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('music', {
-        events: {
-          'onReady': (event) => {
-            event.target.setVolume(30);
-          }
+    <script>
+        function toggleLang() {
+            // تم إزالة الترجمة غير الصالحة
+            alert("سيتم إضافة دعم اللغات قريباً بشكل صحيح!");
         }
-      });
-    }
 
-    function toggleMusic() {
-      if (player) {
-        const state = player.getPlayerState();
-        if (state === 1) { // playing
-          player.pauseVideo();
-          document.querySelector('.music-toggle').textContent = '▶️';
-        } else {
-          player.playVideo();
-          document.querySelector('.music-toggle').textContent = '⏸️';
+        function setVolume(val) {
+            const audio = document.getElementById('bg-music');
+            audio.volume = val;
+            
+            // تشغيل الصوت عند تغيير مستوى الصوت (للتغلب على سياسة التشغيل التلقائي)
+            if (audio.paused) {
+                audio.play().catch(e => console.log("لم يتمكن المتصفح من تشغيل الصوت تلقائياً:", e));
+            }
         }
-      }
-    }
-  </script>
+
+        window.onload = function () {
+            const audio = document.getElementById('bg-music');
+            audio.volume = 0.3;
+            
+            // محاولة تشغيل الصوت تلقائياً (قد لا يعمل في بعض المتصفحات)
+            audio.play().catch(e => console.log("لم يتمكن المتصفح من تشغيل الصوت تلقائياً:", e));
+        };
+    </script>
 </body>
 </html>
