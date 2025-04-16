@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --main-color: #3a3f58;
-            --accent-color: #a3d2ca;
-            --text-color: #fefefe;
+            --main-color: #1e1e2f;
+            --accent-color: #00bcd4;
+            --text-color: #ffffff;
+            --card-color: #2a2a40;
         }
         body {
             background-color: var(--main-color);
@@ -36,9 +37,13 @@
             padding: 0.5rem;
             font-size: 1rem;
             cursor: pointer;
-            background: none;
+            background-color: var(--accent-color);
             border: none;
-            color: var(--text-color);
+            border-radius: 5px;
+            color: var(--main-color);
+        }
+        #volume {
+            accent-color: var(--accent-color);
         }
         .projects {
             display: grid;
@@ -47,7 +52,7 @@
             padding: 2rem;
         }
         .project {
-            background-color: #444;
+            background-color: var(--card-color);
             padding: 1rem;
             border-radius: 10px;
             text-align: center;
@@ -72,6 +77,7 @@
         }
         a {
             color: var(--accent-color);
+            font-weight: bold;
             text-decoration: none;
         }
         a:hover {
@@ -93,42 +99,43 @@
         <button onclick="toggleLang()">🌐</button>
         <input type="range" id="volume" min="0" max="1" step="0.01" value="0.3" onchange="setVolume(this.value)" title="تحكم بالصوت">
     </div>
-    
-    <!-- تم استبدال الصوت برابط مباشر لملف صوتي -->
+
+    <!-- تم تحديث الرابط لصيغة صوتية مدعومة -->
     <audio loop id="bg-music">
-        <source src="https://www.youtube.com/embed/CF2xLXPKoqA" type="audio/mpeg">
-        متصفحك لا يدعم الصوتيات
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c80be6a20a.mp3?filename=future-bass-background-royalty-free-music-116199.mp3" type="audio/mpeg">
+        متصفحك لا يدعم تشغيل الصوت.
     </audio>
 
     <header>
-        <h1 id="main-title">مرحبا، أنا محمد</h1>
+        <h1 id="main-title">مرحباً، أنا محمد</h1>
         <p id="bio">طالب في الصف السادس الإعدادي، أحب الألعاب وصناعة المحتوى ومونتاج الفيديوهات.</p>
     </header>
 
     <section class="projects" id="projects">
+        <!-- تكرار نفس الصورة للمشاريع -->
         <div class="project">
             <a href="https://youtube.com/@XSpace" target="_blank">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzYTNmNTgiLz48dGV4dCB4PSIxMDAiIHk9IjEwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSIjYTNkMmNhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj5YU3BhY2U8L3RleHQ+PC9zdmc+" alt="XSpace Logo" class="xspace-logo">
+                <img src="ChatGPT Image Apr 16, 2025, 04_01_17 PM.png" alt="XSpace Logo" class="xspace-logo">
             </a>
         </div>
         <div class="project">
             <a href="https://instagram.com/space.iqq" target="_blank">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzYTNmNTgiLz48dGV4dCB4PSIxMDAiIHk9IjEwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSIjYTNkMmNhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj5YU3BhY2U8L3RleHQ+PC9zdmc+" alt="XSpace Logo" class="xspace-logo">
+                <img src="ChatGPT Image Apr 16, 2025, 04_01_17 PM.png" alt="XSpace Logo" class="xspace-logo">
             </a>
         </div>
         <div class="project">
             <a href="https://tiktok.com/@space.iq" target="_blank">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzYTNmNTgiLz48dGV4dCB4PSIxMDAiIHk9IjEwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSIjYTNkMmNhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj5YU3BhY2U8L3RleHQ+PC9zdmc+" alt="XSpace Logo" class="xspace-logo">
+                <img src="ChatGPT Image Apr 16, 2025, 04_01_17 PM.png" alt="XSpace Logo" class="xspace-logo">
             </a>
         </div>
         <div class="project">
             <a href="https://facebook.com/mohammed.rn.131488" target="_blank">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzYTNmNTgiLz48dGV4dCB4PSIxMDAiIHk9IjEwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSIjYTNkMmNhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj5YU3BhY2U8L3RleHQ+PC9zdmc+" alt="XSpace Logo" class="xspace-logo">
+                <img src="ChatGPT Image Apr 16, 2025, 04_01_17 PM.png" alt="XSpace Logo" class="xspace-logo">
             </a>
         </div>
         <div class="project">
             <a href="https://discord.gg/QPJ7tZtx" target="_blank">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzYTNmNTgiLz48dGV4dCB4PSIxMDAiIHk9IjEwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSIjYTNkMmNhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj5YU3BhY2U8L3RleHQ+PC9zdmc+" alt="XSpace Logo" class="xspace-logo">
+                <img src="ChatGPT Image Apr 16, 2025, 04_01_17 PM.png" alt="XSpace Logo" class="xspace-logo">
             </a>
         </div>
     </section>
@@ -145,26 +152,21 @@
 
     <script>
         function toggleLang() {
-            // تم إزالة الترجمة غير الصالحة
-            alert("سيتم إضافة دعم اللغات قريباً بشكل صحيح!");
+            alert("ميزة الترجمة قيد التطوير، سيتم إضافتها قريبًا 🌍");
         }
 
         function setVolume(val) {
             const audio = document.getElementById('bg-music');
             audio.volume = val;
-            
-            // تشغيل الصوت عند تغيير مستوى الصوت (للتغلب على سياسة التشغيل التلقائي)
             if (audio.paused) {
-                audio.play().catch(e => console.log("لم يتمكن المتصفح من تشغيل الصوت تلقائياً:", e));
+                audio.play().catch(e => console.log("لم يتمكن المتصفح من تشغيل الصوت تلقائيًا:", e));
             }
         }
 
         window.onload = function () {
             const audio = document.getElementById('bg-music');
             audio.volume = 0.3;
-            
-            // محاولة تشغيل الصوت تلقائياً (قد لا يعمل في بعض المتصفحات)
-            audio.play().catch(e => console.log("لم يتمكن المتصفح من تشغيل الصوت تلقائياً:", e));
+            audio.play().catch(e => console.log("فشل تشغيل الصوت التلقائي:", e));
         };
     </script>
 </body>
