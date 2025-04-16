@@ -1,173 +1,168 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XSpace | محمد</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --main-color: #1e1e2f;
-            --accent-color: #00bcd4;
-            --text-color: #ffffff;
-            --card-color: #2a2a40;
-        }
-        body {
-            background-color: var(--main-color);
-            color: var(--text-color);
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header, footer {
-            padding: 1rem;
-            background-color: var(--accent-color);
-            color: var(--main-color);
-            text-align: center;
-        }
-        .lang-music {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .lang-music button {
-            padding: 0.5rem;
-            font-size: 1rem;
-            cursor: pointer;
-            background-color: var(--accent-color);
-            border: none;
-            border-radius: 5px;
-            color: var(--main-color);
-        }
-        #volume {
-            accent-color: var(--accent-color);
-        }
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-            padding: 2rem;
-        }
-        .project {
-            background-color: var(--card-color);
-            padding: 1rem;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        .project:hover {
-            transform: scale(1.05);
-        }
-        .project img {
-            width: 100%;
-            border-radius: 10px;
-            border: 2px solid var(--accent-color);
-        }
-        .xspace-logo {
-            width: 100%;
-            max-width: 200px;
-            margin: 0 auto;
-            display: block;
-        }
-        audio {
-            display: none;
-        }
-        a {
-            color: var(--accent-color);
-            font-weight: bold;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        @media (max-width: 600px) {
-            .projects {
-                grid-template-columns: 1fr;
-            }
-            .lang-music {
-                top: 5px;
-                left: 5px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>XSpace | محمد</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <style>
+    :root {
+      --main-bg: #121212;
+      --card-bg: #1e1e1e;
+      --text-color: #ffffff;
+      --link-color: #00ffff;
+      --accent: #00bcd4;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--main-bg);
+      color: var(--text-color);
+    }
+
+    header, footer {
+      background-color: var(--accent);
+      color: #000;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .controls {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 999;
+      display: flex;
+      gap: 10px;
+    }
+
+    .controls button {
+      background-color: var(--accent);
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      color: black;
+      cursor: pointer;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      padding: 2rem;
+    }
+
+    .project {
+      background-color: var(--card-bg);
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .project img {
+      width: 100%;
+      border-radius: 8px;
+      border: 2px solid var(--accent);
+    }
+
+    a {
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    audio {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .controls {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="lang-music">
-        <button onclick="toggleLang()">🌐</button>
-        <input type="range" id="volume" min="0" max="1" step="0.01" value="0.3" onchange="setVolume(this.value)" title="تحكم بالصوت">
+
+  <div class="controls">
+    <button onclick="toggleLang()">🌐 ترجمة</button>
+    <button onclick="toggleAudio()">🎵 تشغيل/إيقاف الصوت</button>
+  </div>
+
+  <audio id="bg-music" loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_c80be6a20a.mp3" type="audio/mpeg">
+    متصفحك لا يدعم تشغيل الصوت.
+  </audio>
+
+  <header>
+    <h1>أهلاً، أنا محمد</h1>
+    <p>طالب في السادس الإعدادي، أحب الألعاب، والمونتاج، وصناعة المحتوى.</p>
+  </header>
+
+  <section class="projects">
+    <!-- كرر المشروع بنفس الصورة -->
+    <div class="project">
+      <a href="https://youtube.com/@XSpace" target="_blank">
+        <img src="ChatGPT Image Apr 16, 2025, 04_01_17 PM.png" alt="XSpace Logo">
+        <p>يوتيوب</p>
+      </a>
     </div>
+    <div class="project">
+      <a href="https://instagram.com/space.iqq" target="_blank">
+        <img src="ChatGPT Image Apr 16, 2025, 04_01_17 PM.png" alt="XSpace Logo">
+        <p>انستغرام</p>
+      </a>
+    </div>
+    <div class="project">
+      <a href="https://tiktok.com/@space.iq" target="_blank">
+        <img src="ChatGPT Image Apr 16, 2025, 04_01_17 PM.png" alt="XSpace Logo">
+        <p>تيك توك</p>
+      </a>
+    </div>
+    <div class="project">
+      <a href="https://facebook.com/mohammed.rn.131488" target="_blank">
+        <img src="ChatGPT Image Apr 16, 2025, 04_01_17 PM.png" alt="XSpace Logo">
+        <p>فيسبوك</p>
+      </a>
+    </div>
+    <div class="project">
+      <a href="https://discord.gg/QPJ7tZtx" target="_blank">
+        <img src="ChatGPT Image Apr 16, 2025, 04_01_17 PM.png" alt="XSpace Logo">
+        <p>ديسكورد</p>
+      </a>
+    </div>
+  </section>
 
-    <!-- تم تحديث الرابط لصيغة صوتية مدعومة -->
-    <audio loop id="bg-music">
-        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c80be6a20a.mp3?filename=future-bass-background-royalty-free-music-116199.mp3" type="audio/mpeg">
-        متصفحك لا يدعم تشغيل الصوت.
-    </audio>
+  <footer>
+    <p>روابط التواصل:</p>
+    <p>
+      <a href="https://instagram.com/space.iqq" target="_blank">انستغرام</a> |
+      <a href="https://tiktok.com/@space.iq" target="_blank">تيك توك</a> |
+      <a href="https://facebook.com/mohammed.rn.131488" target="_blank">فيسبوك</a> |
+      <a href="https://discord.gg/QPJ7tZtx" target="_blank">ديسكورد</a>
+    </p>
+  </footer>
 
-    <header>
-        <h1 id="main-title">مرحباً، أنا محمد</h1>
-        <p id="bio">طالب في الصف السادس الإعدادي، أحب الألعاب وصناعة المحتوى ومونتاج الفيديوهات.</p>
-    </header>
+  <script>
+    let isPlaying = false;
+    function toggleLang() {
+      alert("ميزة الترجمة قيد التطوير.");
+    }
 
-    <section class="projects" id="projects">
-        <!-- تكرار نفس الصورة للمشاريع -->
-        <div class="project">
-            <a href="https://youtube.com/@XSpace" target="_blank">
-                <img src="ChatGPT Image Apr 16, 2025, 04_01_17 PM.png" alt="XSpace Logo" class="xspace-logo">
-            </a>
-        </div>
-        <div class="project">
-            <a href="https://instagram.com/space.iqq" target="_blank">
-                <img src="ChatGPT Image Apr 16, 2025, 04_01_17 PM.png" alt="XSpace Logo" class="xspace-logo">
-            </a>
-        </div>
-        <div class="project">
-            <a href="https://tiktok.com/@space.iq" target="_blank">
-                <img src="ChatGPT Image Apr 16, 2025, 04_01_17 PM.png" alt="XSpace Logo" class="xspace-logo">
-            </a>
-        </div>
-        <div class="project">
-            <a href="https://facebook.com/mohammed.rn.131488" target="_blank">
-                <img src="ChatGPT Image Apr 16, 2025, 04_01_17 PM.png" alt="XSpace Logo" class="xspace-logo">
-            </a>
-        </div>
-        <div class="project">
-            <a href="https://discord.gg/QPJ7tZtx" target="_blank">
-                <img src="ChatGPT Image Apr 16, 2025, 04_01_17 PM.png" alt="XSpace Logo" class="xspace-logo">
-            </a>
-        </div>
-    </section>
-
-    <footer>
-        <p>روابط التواصل:</p>
-        <p>
-            <a href="https://instagram.com/space.iqq" target="_blank"><i class="fab fa-instagram"></i> انستغرام</a> |
-            <a href="https://tiktok.com/@space.iq" target="_blank"><i class="fab fa-tiktok"></i> تيك توك</a> |
-            <a href="https://facebook.com/mohammed.rn.131488" target="_blank"><i class="fab fa-facebook"></i> فيسبوك</a> |
-            <a href="https://discord.gg/QPJ7tZtx" target="_blank"><i class="fab fa-discord"></i> ديسكورد</a>
-        </p>
-    </footer>
-
-    <script>
-        function toggleLang() {
-            alert("ميزة الترجمة قيد التطوير، سيتم إضافتها قريبًا 🌍");
-        }
-
-        function setVolume(val) {
-            const audio = document.getElementById('bg-music');
-            audio.volume = val;
-            if (audio.paused) {
-                audio.play().catch(e => console.log("لم يتمكن المتصفح من تشغيل الصوت تلقائيًا:", e));
-            }
-        }
-
-        window.onload = function () {
-            const audio = document.getElementById('bg-music');
-            audio.volume = 0.3;
-            audio.play().catch(e => console.log("فشل تشغيل الصوت التلقائي:", e));
-        };
-    </script>
+    function toggleAudio() {
+      const audio = document.getElementById("bg-music");
+      if (isPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
 </body>
 </html>
