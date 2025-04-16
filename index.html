@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>xspace | الصفحة الشخصية</title>
+  <style>
+    :root {
+      --bg-color: #1e1e2f;
+      --accent-color: #6c5ce7;
+      --text-color: #f0f0f0;
+      --secondary-color: #2d2d44;
+      --card-color: #292946;
+    }
+
+    * {
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    header {
+      background-color: var(--secondary-color);
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    header h1 {
+      margin: 0;
+      color: var(--accent-color);
+      font-size: 2.5rem;
+    }
+
+    .lang-switch {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+    }
+
+    .lang-switch button {
+      padding: 0.5rem 1rem;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .section {
+      background-color: var(--card-color);
+      margin: 1rem auto;
+      padding: 1.5rem;
+      border-radius: 16px;
+      max-width: 800px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .social {
+      margin-top: 2rem;
+    }
+
+    .social a {
+      color: var(--accent-color);
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .social a:hover {
+      color: #a29bfe;
+    }
+
+    .projects {
+      margin-top: 2rem;
+    }
+
+    .projects h2 {
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+    }
+
+    .project-card {
+      background: #37375c;
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1rem auto;
+      max-width: 600px;
+      text-align: left;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div class="lang-switch">
+    <button onclick="toggleLang()">English</button>
+  </div>
+
+  <header>
+    <h1 id="name">xspace</h1>
+  </header>
+
+  <main>
+    <div class="section">
+      <p id="bio">طالب في الصف السادس الإعدادي، أحب الألعاب، صناعة المحتوى، ومونتاج الفيديوهات.</p>
+    </div>
+
+    <div class="section projects">
+      <h2 id="projects-title">أعمالي</h2>
+      <div class="project-card">
+        <p id="project-placeholder">لا توجد أعمال مضافة بعد، ترقبوا جديدي قريباً!</p>
+      </div>
+    </div>
+
+    <div class="section social">
+      <a href="https://instagram.com/space.iqq" target="_blank" id="ig-link">انستغرام</a>
+      <a href="https://tiktok.com/@space.iq" target="_blank" id="tt-link">تيك توك</a>
+      <a href="https://facebook.com/mohammedrn" target="_blank" id="fb-link">فيسبوك</a>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 xspace. All rights reserved.
+  </footer>
+
+  <script>
+    const langData = {
+      ar: {
+        name: "xspace",
+        bio: "طالب في الصف السادس الإعدادي، أحب الألعاب، صناعة المحتوى، ومونتاج الفيديوهات.",
+        ig: "انستغرام",
+        tt: "تيك توك",
+        fb: "فيسبوك",
+        switch: "English",
+        projectsTitle: "أعمالي",
+        projectPlaceholder: "لا توجد أعمال مضافة بعد، ترقبوا جديدي قريباً!"
+      },
+      en: {
+        name: "xspace",
+        bio: "High school senior passionate about gaming, content creation, and video editing.",
+        ig: "Instagram",
+        tt: "TikTok",
+        fb: "Facebook",
+        switch: "العربية",
+        projectsTitle: "My Work",
+        projectPlaceholder: "No projects added yet. Stay tuned!"
+      }
+    };
+
+    let currentLang = 'ar';
+
+    function toggleLang() {
+      currentLang = currentLang === 'ar' ? 'en' : 'ar';
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+      document.getElementById('name').textContent = langData[currentLang].name;
+      document.getElementById('bio').textContent = langData[currentLang].bio;
+      document.getElementById('ig-link').textContent = langData[currentLang].ig;
+      document.getElementById('tt-link').textContent = langData[currentLang].tt;
+      document.getElementById('fb-link').textContent = langData[currentLang].fb;
+      document.querySelector('.lang-switch button').textContent = langData[currentLang].switch;
+      document.getElementById('projects-title').textContent = langData[currentLang].projectsTitle;
+      document.getElementById('project-placeholder').textContent = langData[currentLang].projectPlaceholder;
+    }
+  </script>
+</body>
+</html>
