@@ -21,8 +21,9 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg-color);
+      background: linear-gradient(to bottom right, #1e1e2f, #2d2d44);
       color: var(--text-color);
+      overflow-x: hidden;
     }
 
     header {
@@ -30,6 +31,7 @@
       padding: 1rem;
       text-align: center;
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      position: relative;
     }
 
     header h1 {
@@ -102,6 +104,16 @@
       text-align: left;
     }
 
+    .audio-player {
+      margin-top: 1rem;
+    }
+
+    .discord {
+      margin-top: 1rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
     footer {
       text-align: center;
       padding: 1rem;
@@ -124,10 +136,24 @@
       <p id="bio">طالب في الصف السادس الإعدادي، أحب الألعاب، صناعة المحتوى، ومونتاج الفيديوهات.</p>
     </div>
 
+    <div class="section audio-player">
+      <h3>🎧 موسيقى هادئة</h3>
+      <audio controls loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9776e93b21.mp3?filename=tranquility-10888.mp3" type="audio/mpeg">
+        متصفحك لا يدعم تشغيل الصوت.
+      </audio>
+    </div>
+
     <div class="section projects">
       <h2 id="projects-title">أعمالي</h2>
       <div class="project-card">
-        <p id="project-placeholder">لا توجد أعمال مضافة بعد، ترقبوا جديدي قريباً!</p>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="https://youtu.be/VubqNscw0LA" target="_blank">مشروع 1 🎬</a></li>
+          <li><a href="https://www.youtube.com/watch?v=tF3JlNYsD98" target="_blank">مشروع 2 🎮</a></li>
+          <li><a href="https://www.youtube.com/watch?v=XUm6tVEJ22U" target="_blank">مشروع 3 🧠</a></li>
+          <li><a href="https://www.youtube.com/watch?v=K_cnStsF33g&t=69s" target="_blank">مشروع 4 🔧</a></li>
+          <li><a href="https://www.youtube.com/watch?v=cUlCyF_uj14" target="_blank">مشروع 5 🎥</a></li>
+        </ul>
       </div>
     </div>
 
@@ -135,6 +161,9 @@
       <a href="https://instagram.com/space.iqq" target="_blank" id="ig-link">انستغرام</a>
       <a href="https://tiktok.com/@space.iq" target="_blank" id="tt-link">تيك توك</a>
       <a href="https://www.facebook.com/mohammed.rn.131488/" target="_blank" id="fb-link">فيسبوك</a>
+      <div class="discord">
+        🎮 ديسكورد: <a href="https://discord.gg/QPJ7tZtx" target="_blank">https://discord.gg/QPJ7tZtx</a>
+      </div>
     </div>
   </main>
 
@@ -151,8 +180,7 @@
         tt: "تيك توك",
         fb: "فيسبوك",
         switch: "English",
-        projectsTitle: "أعمالي",
-        projectPlaceholder: "لا توجد أعمال مضافة بعد، ترقبوا جديدي قريباً!"
+        projectsTitle: "أعمالي"
       },
       en: {
         name: "xspace",
@@ -161,8 +189,7 @@
         tt: "TikTok",
         fb: "Facebook",
         switch: "العربية",
-        projectsTitle: "My Work",
-        projectPlaceholder: "No projects added yet. Stay tuned!"
+        projectsTitle: "My Work"
       }
     };
 
@@ -179,7 +206,6 @@
       document.getElementById('fb-link').textContent = langData[currentLang].fb;
       document.querySelector('.lang-switch button').textContent = langData[currentLang].switch;
       document.getElementById('projects-title').textContent = langData[currentLang].projectsTitle;
-      document.getElementById('project-placeholder').textContent = langData[currentLang].projectPlaceholder;
     }
   </script>
 </body>
