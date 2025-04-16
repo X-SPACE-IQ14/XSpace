@@ -2,211 +2,192 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>xspace | الصفحة الشخصية</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>xspace | مساحة شخصية</title>
   <style>
     :root {
-      --bg-color: #1e1e2f;
-      --accent-color: #6c5ce7;
-      --text-color: #f0f0f0;
-      --secondary-color: #2d2d44;
-      --card-color: #292946;
-    }
-
-    * {
-      box-sizing: border-box;
-      transition: all 0.3s ease;
+      --primary-color: #222831;
+      --secondary-color: #393e46;
+      --accent-color: #00adb5;
+      --text-color: #eeeeee;
     }
 
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #1e1e2f, #2d2d44);
+      background-color: var(--primary-color);
       color: var(--text-color);
-      overflow-x: hidden;
+      line-height: 1.6;
     }
 
     header {
       background-color: var(--secondary-color);
       padding: 1rem;
       text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      position: relative;
     }
 
-    header h1 {
+    h1 {
       margin: 0;
+      font-size: 2rem;
       color: var(--accent-color);
-      font-size: 2.5rem;
     }
 
-    .lang-switch {
-      position: absolute;
+    .language-toggle,
+    .volume-control {
+      position: fixed;
       top: 1rem;
       left: 1rem;
-    }
-
-    .lang-switch button {
-      padding: 0.5rem 1rem;
-      background-color: var(--accent-color);
+      background: var(--accent-color);
       color: white;
       border: none;
-      border-radius: 8px;
+      padding: 0.5rem;
+      margin-left: 0.5rem;
       cursor: pointer;
+      border-radius: 8px;
     }
 
-    main {
+    .volume-control {
+      left: 6rem;
+    }
+
+    section {
       padding: 2rem;
-      text-align: center;
-    }
-
-    .section {
-      background-color: var(--card-color);
-      margin: 1rem auto;
-      padding: 1.5rem;
-      border-radius: 16px;
-      max-width: 800px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-
-    .social {
-      margin-top: 2rem;
+      max-width: 900px;
+      margin: auto;
     }
 
     .social a {
       color: var(--accent-color);
-      margin: 0 1rem;
       text-decoration: none;
-      font-weight: bold;
-      font-size: 1.1rem;
+      margin-right: 1rem;
     }
 
     .social a:hover {
-      color: #a29bfe;
       text-decoration: underline;
     }
 
     .projects {
-      margin-top: 2rem;
-    }
-
-    .projects h2 {
-      color: var(--accent-color);
-      margin-bottom: 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
     }
 
     .project-card {
-      background: #37375c;
-      border-radius: 12px;
+      background: var(--secondary-color);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .project-card img {
+      width: 100%;
+      display: block;
+    }
+
+    .project-card a {
+      display: block;
       padding: 1rem;
-      margin: 1rem auto;
-      max-width: 600px;
-      text-align: left;
-    }
-
-    .audio-player {
-      margin-top: 1rem;
-    }
-
-    .discord {
-      margin-top: 1rem;
-      font-weight: bold;
-      font-size: 1.1rem;
-    }
-
-    footer {
+      color: var(--text-color);
       text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #aaa;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <div class="lang-switch">
-    <button onclick="toggleLang()">English</button>
-  </div>
-
   <header>
-    <h1 id="name">xspace</h1>
+    <h1 id="main-title">أهلاً، أنا xspace</h1>
   </header>
 
-  <main>
-    <div class="section">
-      <p id="bio">طالب في الصف السادس الإعدادي، أحب الألعاب، صناعة المحتوى، ومونتاج الفيديوهات.</p>
+  <button class="language-toggle" onclick="toggleLang()">EN</button>
+  <input type="range" class="volume-control" min="0" max="1" step="0.01" value="0.3" onchange="setVolume(this.value)"/>
+
+  <section>
+    <p id="bio">
+      طالب في الصف السادس الإعدادي، أحب الألعاب وصناعة المحتوى ومونتاج الفيديوهات 🎮🎥
+    </p>
+
+    <div class="social">
+      <h2>روابطي</h2>
+      <a href="https://www.instagram.com/space.iqq/" target="_blank">انستقرام</a>
+      <a href="https://www.tiktok.com/@space.iq" target="_blank">تيك توك</a>
+      <a href="https://www.facebook.com/mohammed.rn.131488/" target="_blank">فيسبوك</a>
+      <a href="https://discord.gg/QPJ7tZtx" target="_blank">ديسكورد</a>
     </div>
 
-    <div class="section audio-player">
-      <h3>🎧 موسيقى هادئة</h3>
-      <audio controls loop>
-        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9776e93b21.mp3?filename=tranquility-10888.mp3" type="audio/mpeg">
-        متصفحك لا يدعم تشغيل الصوت.
-      </audio>
-    </div>
-
-    <div class="section projects">
-      <h2 id="projects-title">أعمالي</h2>
+    <h2 id="projects-title">مشاريعي</h2>
+    <div class="projects">
       <div class="project-card">
-        <ul style="list-style: none; padding: 0;">
-          <li><a href="https://youtu.be/VubqNscw0LA" target="_blank">مشروع 1 🎬</a></li>
-          <li><a href="https://www.youtube.com/watch?v=tF3JlNYsD98" target="_blank">مشروع 2 🎮</a></li>
-          <li><a href="https://www.youtube.com/watch?v=XUm6tVEJ22U" target="_blank">مشروع 3 🧠</a></li>
-          <li><a href="https://www.youtube.com/watch?v=K_cnStsF33g&t=69s" target="_blank">مشروع 4 🔧</a></li>
-          <li><a href="https://www.youtube.com/watch?v=cUlCyF_uj14" target="_blank">مشروع 5 🎥</a></li>
-        </ul>
+        <img src="https://img.youtube.com/vi/VubqNscw0LA/0.jpg" alt="project 1">
+        <a href="https://youtu.be/VubqNscw0LA" target="_blank">فيديو 1</a>
+      </div>
+      <div class="project-card">
+        <img src="https://img.youtube.com/vi/tF3JlNYsD98/0.jpg" alt="project 2">
+        <a href="https://www.youtube.com/watch?v=tF3JlNYsD98" target="_blank">فيديو 2</a>
+      </div>
+      <div class="project-card">
+        <img src="https://img.youtube.com/vi/XUm6tVEJ22U/0.jpg" alt="project 3">
+        <a href="https://www.youtube.com/watch?v=XUm6tVEJ22U" target="_blank">فيديو 3</a>
+      </div>
+      <div class="project-card">
+        <img src="https://img.youtube.com/vi/K_cnStsF33g/0.jpg" alt="project 4">
+        <a href="https://www.youtube.com/watch?v=K_cnStsF33g" target="_blank">فيديو 4</a>
+      </div>
+      <div class="project-card">
+        <img src="https://img.youtube.com/vi/cUlCyF_uj14/0.jpg" alt="project 5">
+        <a href="https://www.youtube.com/watch?v=cUlCyF_uj14" target="_blank">فيديو 5</a>
       </div>
     </div>
+  </section>
 
-    <div class="section social">
-      <a href="https://instagram.com/space.iqq" target="_blank" id="ig-link">انستغرام</a>
-      <a href="https://tiktok.com/@space.iq" target="_blank" id="tt-link">تيك توك</a>
-      <a href="https://www.facebook.com/mohammed.rn.131488/" target="_blank" id="fb-link">فيسبوك</a>
-      <div class="discord">
-        🎮 ديسكورد: <a href="https://discord.gg/QPJ7tZtx" target="_blank">https://discord.gg/QPJ7tZtx</a>
-      </div>
-    </div>
-  </main>
-
-  <footer>
-    &copy; 2025 xspace. All rights reserved.
-  </footer>
+  <iframe
+    id="music"
+    width="0"
+    height="0"
+    src="https://www.youtube.com/embed/5NPlJAHES5Y?autoplay=1&loop=1&playlist=5NPlJAHES5Y"
+    title="YouTube audio"
+    frameborder="0"
+    allow="autoplay"
+    allowfullscreen
+  ></iframe>
 
   <script>
     const langData = {
       ar: {
-        name: "xspace",
-        bio: "طالب في الصف السادس الإعدادي، أحب الألعاب، صناعة المحتوى، ومونتاج الفيديوهات.",
-        ig: "انستغرام",
-        tt: "تيك توك",
-        fb: "فيسبوك",
-        switch: "English",
-        projectsTitle: "أعمالي"
+        title: "أهلاً، أنا xspace",
+        bio: "طالب في الصف السادس الإعدادي، أحب الألعاب وصناعة المحتوى ومونتاج الفيديوهات 🎮🎥",
+        projectsTitle: "مشاريعي",
+        lang: "EN"
       },
       en: {
-        name: "xspace",
-        bio: "High school senior passionate about gaming, content creation, and video editing.",
-        ig: "Instagram",
-        tt: "TikTok",
-        fb: "Facebook",
-        switch: "العربية",
-        projectsTitle: "My Work"
+        title: "Hello, I'm xspace",
+        bio: "I'm a 6th grade high school student. I love gaming, content creation, and video editing 🎮🎥",
+        projectsTitle: "My Projects",
+        lang: "AR"
       }
     };
 
-    let currentLang = 'ar';
-
+    let currentLang = "ar";
     function toggleLang() {
-      currentLang = currentLang === 'ar' ? 'en' : 'ar';
+      currentLang = currentLang === "ar" ? "en" : "ar";
       document.documentElement.lang = currentLang;
-      document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-      document.getElementById('name').textContent = langData[currentLang].name;
-      document.getElementById('bio').textContent = langData[currentLang].bio;
-      document.getElementById('ig-link').textContent = langData[currentLang].ig;
-      document.getElementById('tt-link').textContent = langData[currentLang].tt;
-      document.getElementById('fb-link').textContent = langData[currentLang].fb;
-      document.querySelector('.lang-switch button').textContent = langData[currentLang].switch;
-      document.getElementById('projects-title').textContent = langData[currentLang].projectsTitle;
+      document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+      document.getElementById("main-title").textContent = langData[currentLang].title;
+      document.getElementById("bio").textContent = langData[currentLang].bio;
+      document.getElementById("projects-title").textContent = langData[currentLang].projectsTitle;
+      document.querySelector(".language-toggle").textContent = langData[currentLang].lang;
+    }
+
+    function setVolume(val) {
+      const iframe = document.getElementById('music');
+      const player = new YT.Player(iframe, {
+        events: {
+          'onReady': (event) => {
+            event.target.setVolume(val * 100);
+          }
+        }
+      });
     }
   </script>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
